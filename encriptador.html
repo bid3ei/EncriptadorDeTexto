@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador</title> <link rel="stylesheet" href="diseño.css">
+</head>
+<body>
+    
+</body>
+</html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<title>Encriptador de texto</title>
+	<style>
+		textarea {
+			width: 100%;
+			height: 200px;
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<textarea id="mensaje"></textarea>
+		<button type="button" onclick="encriptar()">Encriptar/Desencriptar</button>
+        <button type="button" onclick="copiar()">Copiar al portapapeles</button>
+	</form>
+	<script>
+			// código para encriptar/desencriptar el mensaje   
+        function encriptar() {
+            var mensaje = document.getElementById("mensaje").value;
+            var resultado = "";
+            for (var i = 0; i < mensaje.length; i++) {
+                var letra = mensaje.charAt(i);
+                var codigo = letra.charCodeAt(0);
+                if (codigo >= 97 && codigo <= 122) { // letras minúsculas
+                    letra = String.fromCharCode(219 - codigo);
+                }
+                resultado += letra;
+            }
+            document.getElementById("mensaje").value = resultado;
+        }
+
+        function copiar() {
+            var mensaje = document.getElementById("mensaje");
+            mensaje.select();
+            document.execCommand("copy");
+            alert("Texto copiado al portapapeles");
+        }
+
+	
+	</script>
+</body>
+</html>
